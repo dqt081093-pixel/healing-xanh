@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healing Xanh | Ăn chay • Sống xanh • Yêu thương động vật</title>
+  <meta name="description" content="Healing Xanh - không gian sống chậm, ăn chay, sống xanh và yêu thương động vật.">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.7;
+      color:#294033;
+      background:#f7fbf5;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+
+    /* HEADER */
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(247,251,245,.94);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid #dcebdd;
+    }
+    .nav{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    }
+    .logo{font-size:24px;font-weight:800;color:#28623b}
+    .logo span{color:#d18b4b}
+    nav{display:flex;gap:22px;flex-wrap:wrap}
+    nav a{font-size:15px;font-weight:600;color:#466251}
+    nav a:hover{color:#2d8a50}
+
+    /* HERO */
+    .hero{
+      min-height:650px;
+      display:grid;place-items:center;text-align:center;
+      padding:90px 0;
+      background:
+        linear-gradient(rgba(26,74,45,.60),rgba(36,92,55,.68)),
+        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+      color:white;
+    }
+    .hero-content{max-width:820px}
+    .badge{
+      display:inline-block;padding:7px 15px;border-radius:999px;
+      background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+      margin-bottom:20px;font-size:14px;
+    }
+    h1{font-size:clamp(42px,7vw,76px);line-height:1.08;margin-bottom:22px}
+    .hero p{font-size:20px;max-width:700px;margin:0 auto 30px}
+    .buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+    .btn{
+      display:inline-block;padding:13px 24px;border-radius:999px;font-weight:700;
+      background:#fff;color:#28623b;
+    }
+    .btn.outline{background:transparent;color:#fff;border:1px solid #fff}
+
+    /* GENERAL */
+    section{padding:82px 0}
+    .section-head{text-align:center;max-width:720px;margin:0 auto 42px}
+    .section-head .eyebrow{color:#3d9257;font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:13px}
+    h2{font-size:38px;line-height:1.2;color:#234d31;margin:8px 0 14px}
+    .section-head p{color:#637467}
+
+    /* CARDS */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{
+      background:white;border:1px solid #e0ece0;border-radius:22px;
+      padding:30px;box-shadow:0 8px 25px rgba(40,80,45,.07);
+      transition:.25s;
+    }
+    .card:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(40,80,45,.12)}
+    .icon{font-size:42px;margin-bottom:14px}
+    .card h3{font-size:22px;color:#2b603b;margin-bottom:10px}
+    .card p{color:#66756a}
+
+    /* QUOTE */
+    .quote{
+      background:#eaf5e8;text-align:center;padding:65px 20px;
+    }
+    blockquote{
+      max-width:820px;margin:auto;font-size:29px;line-height:1.45;
+      color:#2e5f3b;font-weight:600;
+    }
+    .quote small{display:block;margin-top:15px;color:#718071}
+
+    /* PRACTICE */
+    .practice{background:white}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .step{
+      padding:25px;border-radius:18px;background:#f5f9f3;border:1px solid #dfebdd;
+    }
+    .number{
+      width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      background:#3d9257;color:#fff;font-weight:800;margin-bottom:15px;
+    }
+    .step h3{color:#315d3d;margin-bottom:8px}
+
+    /* RECIPE */
+    .recipe{
+      display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;
+    }
+    .recipe-img{
+      min-height:410px;border-radius:28px;
+      background:url("https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=85") center/cover;
+    }
+    .recipe-text ul{list-style:none;margin:20px 0}
+    .recipe-text li{padding:8px 0;border-bottom:1px dashed #d9e6d8}
+    .recipe-text li::before{content:"✓";color:#3d9257;font-weight:bold;margin-right:10px}
+
+    /* ANIMALS */
+    .animal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .animal{
+      min-height:240px;border-radius:22px;padding:25px;
+      display:flex;align-items:end;color:white;overflow:hidden;position:relative;
+      background-size:cover;background-position:center;
+    }
+    .animal::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.68))}
+    .animal div{position:relative;z-index:1}
+    .animal h3{font-size:24px}
+
+    /* FOOTER */
+    footer{background:#173c25;color:#dcebdc;padding:55px 0 25px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
+    footer h3{color:#fff;margin-bottom:12px}
+    footer p,footer a{color:#b9cfbd}
+    .copyright{text-align:center;border-top:1px solid #31563b;margin-top:35px;padding-top:20px;font-size:14px}
+
+    /* RESPONSIVE */
+    @media(max-width:800px){
+      nav{display:none}
+      .cards,.animal-grid,.steps{grid-template-columns:1fr 1fr}
+      .recipe{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:520px){
+      section{padding:60px 0}
+      .cards,.animal-grid,.steps{grid-template-columns:1fr}
+      h2{font-size:31px}
+      .hero{min-height:600px}
+      .hero p{font-size:17px}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">Healing <span>🌿</span> Xanh</a>
+    <nav>
+      <a href="#healing">Healing</a>
+      <a href="#anchay">Ăn chay</a>
+      <a href="#songxanh">Sống xanh</a>
+      <a href="#dongvat">Động vật</a>
+      <a href="#thuchanh">Thực hành</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="badge">🌱 Một lối sống nhẹ nhàng cho người và hành tinh</div>
+      <h1>Healing Xanh</h1>
+      <p>
+        Ăn chay để nuôi dưỡng cơ thể · Sống xanh để bảo vệ Trái Đất ·
+        Yêu thương động vật để lan tỏa lòng từ bi.
+      </p>
+      <div class="buttons">
+        <a class="btn" href="#healing">Khám phá hành trình</a>
+        <a class="btn outline" href="#thuchanh">Thực hành hôm nay</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="healing">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Healing</div>
+        <h2>Chữa lành bắt đầu từ những điều rất nhỏ</h2>
+        <p>
+          Một bữa ăn lành mạnh, một hơi thở sâu, một hành động tử tế.
+          Khi thay đổi từng ngày, chúng ta tạo nên một cuộc sống bình an hơn.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icon">🧘</div>
+          <h3>Tâm an</h3>
+          <p>Dành vài phút mỗi ngày để thở chậm, quan sát cảm xúc và trở về với hiện tại.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🥗</div>
+          <h3>Thân khỏe</h3>
+          <p>Ưu tiên rau củ, đậu, hạt, ngũ cốc nguyên hạt và những món ăn thực vật đa dạng.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💚</div>
+          <h3>Lòng từ bi</h3>
+          <p>Học cách sống nhẹ nhàng với bản thân, con người, muôn loài và môi trường.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote">
+    <blockquote>
+      “Khi chúng ta sống tử tế hơn với muôn loài,<br>
+      thế giới quanh ta cũng trở nên dịu dàng hơn.”
+    </blockquote>
+    <small>— Healing Xanh</small>
+  </div>
+
+  <section id="anchay">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Vegan Living</div>
+        <h2>Ăn chay — nuôi dưỡng bằng thực vật</h2>
+        <p>Không cần hoàn hảo. Hãy bắt đầu bằng một bữa ăn xanh hơn mỗi ngày.</p>
+      </div>
+
+      <div class="recipe">
+        <div class="recipe-img" aria-label="Món ăn thực vật nhiều rau củ"></div>
+        <div class="recipe-text">
+          <h3>🥬 Một đĩa ăn xanh cân bằng</h3>
+          <p>Gợi ý đơn giản cho bữa ăn thực vật:</p>
+          <ul>
+            <li>Rau xanh và rau củ nhiều màu sắc</li>
+            <li>Đậu, đậu phụ hoặc các nguồn protein thực vật</li>
+            <li>Gạo lứt, khoai, yến mạch hoặc ngũ cốc nguyên hạt</li>
+            <li>Hạt và chất béo thực vật với lượng phù hợp</li>
+            <li>Trái cây và nước uống đủ trong ngày</li>
+          </ul>
+          <a class="btn" style="background:#3d9257;color:white" href="#thuchanh">Bắt đầu hôm nay</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="songxanh" style="background:#eef7eb">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Green Living</div>
+        <h2>7 thói quen sống xanh</h2>
+        <p>Những việc nhỏ nhưng khi nhiều người cùng làm sẽ tạo ra thay đổi lớn.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step"><div class="number">1</div><h3>Mang bình nước</h3><p>Giảm chai nhựa dùng một lần.</p></div>
+        <div class="step"><div class="number">2</div><h3>Túi tái sử dụng</h3><p>Mang túi vải khi mua sắm.</p></div>
+        <div class="step"><div class="number">3</div><h3>Ăn thực vật</h3><p>Tăng bữa ăn có nguồn gốc thực vật.</p></div>
+        <div class="step"><div class="number">4</div><h3>Tiết kiệm điện</h3><p>Tắt thiết bị khi không sử dụng.</p></div>
+        <div class="step"><div class="number">5</div><h3>Trồng cây</h3><p>Thêm một mảng xanh vào không gian sống.</p></div>
+        <div class="step"><div class="number">6</div><h3>Đi chậm lại</h3><p>Đi bộ hoặc sử dụng phương tiện công cộng khi phù hợp.</p></div>
+        <div class="step"><div class="number">7</div><h3>Mua vừa đủ</h3><p>Ưu tiên sản phẩm bền, dùng lâu và ít bao bì.</p></div>
+        <div class="step"><div class="number">♥</div><h3>Lan tỏa</h3><p>Chia sẻ một hành động xanh với người khác.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dongvat">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Animal Compassion</div>
+        <h2>Yêu thương động vật</h2>
+        <p>Động vật cũng cảm nhận được sự an toàn, đau đớn và tình yêu thương.</p>
+      </div>
+
+      <div class="animal-grid">
+        <div class="animal" style="background-image:url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=900&q=85')">
+          <div><h3>🐶 Bạn đồng hành</h3><p>Đối xử dịu dàng và có trách nhiệm.</p></div>
+        </div>
+        <div class="animal" style="background-image:url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=900&q=85')">
+          <div><h3>🐱 Mỗi sinh mệnh đều đáng yêu</h3><p>Tôn trọng nhu cầu và không gian của chúng.</p></div>
+        </div>
+        <div class="animal" style="background-image:url('https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=85')">
+          <div><h3>🌏 Sống không làm tổn thương</h3><p>Hướng tới lựa chọn nhân ái hơn mỗi ngày.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="thuchanh" class="practice">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Today</div>
+        <h2>Thử thách Healing Xanh hôm nay</h2>
+        <p>Chọn ít nhất 3 việc. Không áp lực — chỉ cần bắt đầu.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card"><div class="icon">🌿</div><h3>10 phút thiên nhiên</h3><p>Ra ngoài, hít thở và quan sát cây cối xung quanh.</p></article>
+        <article class="card"><div class="icon">🥦</div><h3>1 bữa ăn xanh</h3><p>Thực hiện một bữa ăn thuần thực vật nhiều màu sắc.</p></article>
+        <article class="card"><div class="icon">❤️</div><h3>1 việc tử tế</h3><p>Giúp một người, chăm sóc một con vật hoặc bảo vệ một mầm cây.</p></article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h3>Healing Xanh 🌿</h3>
+      <p>Ăn chay · Sống xanh · Yêu thương động vật · Nuôi dưỡng bình an.</p>
+    </div>
+    <div>
+      <h3>Khám phá</h3>
+      <p><a href="#healing">Healing</a></p>
+      <p><a href="#anchay">Ăn chay</a></p>
+      <p><a href="#songxanh">Sống xanh</a></p>
+    </div>
+    <div>
+      <h3>Thông điệp</h3>
+      <p>“Be vegan. Keep peace. Save the planet.”</p>
+    </div>
+  </div>
+  <div class="container copyright">
+    © 2026 Healing Xanh — Website học tập hosting miễn phí.
+  </div>
+</footer>
+
+</body>
+</html>
